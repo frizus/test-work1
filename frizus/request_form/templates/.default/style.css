@@ -1,0 +1,8 @@
+.frizus-request-form .csrf-error,
+.frizus-request-form .send-mail-error {
+    font-size: 14px;
+    font-weight: normal;
+}
+.frizus-request-form .order-list .actions a {
+    text-decoration: none;
+}
