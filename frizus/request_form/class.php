@@ -39,6 +39,13 @@ class FrizusRequestForm extends CBitrixComponent
      */
     public function executeComponent()
     {
+        if (!isset($this->arParams['~RECIPIENT_EMAIL']) ||
+            ($this->arParams['~RECIPIENT_EMAIL'] === '')
+        ) {
+            echo $this->getName() . ': Не указана почта получателя.';
+            return;
+        }
+
         $this->arResult['ERRORS'] = [];
         $this->arResult['ORDER_LIST_FIELDS'] = ['brand', 'name', 'quantity', 'packaging', 'client'];
 
@@ -55,13 +62,6 @@ class FrizusRequestForm extends CBitrixComponent
     protected function formSendAction()
     {
         $this->arResult['OLD_VALUES'] = $this->validateFields();
-
-        if (!isset($this->arParams['~RECIPIENT_EMAIL']) ||
-            ($this->arParams['~RECIPIENT_EMAIL'] === '')
-        ) {
-            echo $this->getName() . ': Не указана почта получателя.';
-            return;
-        }
 
         if ($this->haveValidationErrors()) {
             $this->showForm();
@@ -198,7 +198,8 @@ class FrizusRequestForm extends CBitrixComponent
         if (array_key_exists('file', $fields) &&
             (
                 !is_array($fields['file']) ||
-                !is_array($fields['file']['name'])
+                !is_array($fields['file']['name']) ||
+                !is_array($fields['file']['tmp_name'])
             )
         ) {
             $fields['file'] = null;

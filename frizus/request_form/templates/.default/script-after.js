@@ -98,8 +98,9 @@
                 if (instance[options]) {
                     if (first) {
                         methodResult = instance[options].apply(instance, after)
+                    } else {
+                        instance[options].apply(instance, after)
                     }
-                    instance[options].apply(instance, after)
                 } else {
                     //$.error('Method ' + options + ' does not exist on Plugin');
                 }

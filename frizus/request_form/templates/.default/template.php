@@ -13,7 +13,7 @@ $asset->addJs($this->GetFolder() . '/lib/bootstrap/js/bootstrap.js');
 $asset->addJs($this->GetFolder() . '/script-after.js');
 
 if ($arResult['SENT'] ?? false) {
-    echo '<div class="container">';
+    echo '<div class="container frizus-request-form">';
     echo '<h1 class="h3 mb-4">Заявка отправлена</h1>';
     echo '<p class="lead">Заявка успешно отправлена.</p>';
     echo '<a href="' . $APPLICATION->GetCurPageParam() . '">Вернуться</a>';
@@ -29,10 +29,11 @@ $compnentId = $this->getEditAreaId('');
 
 echo '<div class="container frizus-request-form" id="' . $compnentId . '">';
 $form->open();
-echo '<h1 class="h3 mb-4">Новая заявка';
+echo '<div class="mb-4">';
+echo '<h1 class="h3">Новая заявка</h1>';
 $form->showCsrfErrors();
 $form->showMailErrors();
-echo '</h1>';
+echo '</div>';
 
 $form->text('title', [
     'label' => 'Заголовок заявки',
