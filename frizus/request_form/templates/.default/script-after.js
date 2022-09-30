@@ -46,7 +46,7 @@
             var match = $orderItem.find(':input').first().attr('name').match(/^([^\[]+)\[(\d+)\]\[([^\]]+)\]$/)
             return parseInt(match[2]) + 1
         },
-        replaceOrderInputIndex($input, newIndex) {
+        replaceOrderItemInputIndex($input, newIndex) {
             var newName = $input.attr('name').replace(/^([^\[]+\[)\d+(\]\[[^\]]+\])$/, '$1' + newIndex + '$2')
             $input.attr('name', newName)
         },
@@ -69,7 +69,7 @@
             var $orderItem = this.children.$orderList.find(this.settings.orderItemSelector).first().clone()
             $orderItem.find(':input').each(function () {
                 $(this).val('')
-                plugin.replaceOrderInputIndex($(this), plugin.maxOrderItemIndex)
+                plugin.replaceOrderItemInputIndex($(this), plugin.maxOrderItemIndex)
             })
             this.maxOrderItemIndex++
 
