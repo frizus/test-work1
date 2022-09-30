@@ -68,7 +68,6 @@ class FrizusRequestFormOrderListHelper
             }
         }
         $this->actionsCell();
-        echo '<td></td>';
         echo '</tr>';
     }
 
